@@ -1,7 +1,13 @@
 #!/usr/bin/env sh
 
-if [ -S .yvim.sock ]; then
-	nvim --server $(pwd)/.yvim.sock --remote $1
+if [ $# -eq 0 ]; then
+	F=$(fzf)
 else
-	nvim --listen $(pwd)/.yvim.sock $1
+	F=$1
+fi
+
+if [ -S .yvim.sock ]; then
+	nvim --server $(pwd)/.yvim.sock --remote $F
+else
+	nvim --listen $(pwd)/.yvim.sock $F
 fi
