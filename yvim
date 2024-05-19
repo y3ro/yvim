@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ $# -eq 0 ]; then
-	F=$(fzf)
+	F=$(fdfind --type f --hidden --exclude ".git" | fzf --scheme=history)
 else
 	F=$1
 fi
