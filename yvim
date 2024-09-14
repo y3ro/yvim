@@ -6,8 +6,14 @@ else
 	F=$1
 fi
 
-if [ -S .yvim.sock ]; then
-	nvim --server $(pwd)/.yvim.sock --remote $F
+# TODO: if nothing selected, exit
+
+curr_dir=$(pwd)
+tmp_dir="/tmp/"
+socket_fname=$tmp_dir$(echo $curr_dir | tr '/' '_').yvim.sock
+
+if [ -S $socket_fname ]; then
+	nvim --server $socket_fname --remote $F
 else
-	nvim --listen $(pwd)/.yvim.sock $F
+	nvim --listen $socket_fname $F
 fi
