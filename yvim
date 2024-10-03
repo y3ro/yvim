@@ -7,6 +7,7 @@ else
 fi
 
 # TODO: if nothing selected, exit
+# TODO: add option to clear stale sock files
 
 curr_dir=$(pwd)
 tmp_dir="/tmp/"
